@@ -1,14 +1,16 @@
 # modis_latlon2tile
 Get Modis tile from lat long
 
-#from a point get tile hv
-latlon2tile(self,latlon):
-      input: latlon = [lat,lon]
-		  output: [h,v]
-		  if erro return None
+**from a point get tile hv
+  
+*latlon2tile(self,latlon):
+    input: latlon = [lat,lon]
+    output: [h,v]
+    if erro return None
       
-#fron a polygon get hv list     
-getmodistiles(self,coordinates):
+**fron a polygon get hv list  
+
+*getmodistiles(self,coordinates):
         input latlon points [
                     -106.2158203125,
                     31.50362930577303

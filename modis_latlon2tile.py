@@ -15,7 +15,7 @@ class Modis2tile():
             https://landweb.modaps.eosdis.nasa.gov/cgi-bin/developer/tilemap.cgi
         '''
         self.data = np.genfromtxt("./sn_bound_10deg.txt",skip_header = 7,skip_footer = 2)
-        self.data_pology = np.genfromtxt("./sn_gring_10deg.txt",skip_header = 7,skip_footer = 2)
+        self.data_polygon = np.genfromtxt("./sn_gring_10deg.txt",skip_header = 7,skip_footer = 2)
         self.len = len(self.data)
 
     def latlon2tile(self,latlon):
@@ -38,7 +38,7 @@ class Modis2tile():
                     vert = self.data[i, 0]
                     horiz = self.data[i, 1]
                     ret.append([horiz,vert])
-                    bounds.append(Polygon([[self.data_pology[i, 2],self.data_pology[i, 3]],[self.data_pology[i, 4],self.data_pology[i, 5]],[self.data_pology[i, 6],self.data_pology[i, 7]],[self.data_pology[i, 8],self.data_pology[i, 9]]]))
+                    bounds.append(Polygon([[self.data_polygon[i, 2],self.data_polygon[i, 3]],[self.data_polygon[i, 4],self.data_polygon[i, 5]],[self.data_polygon[i, 6],self.data_polygon[i, 7]],[self.data_polygon[i, 8],self.data_polygon[i, 9]]]))
                 i += 1
             except Exception as e:
                 print(e)
@@ -78,7 +78,7 @@ class Modis2tile():
                 ret.append(tmp)
                 fleft = fleft + 4.9
             top = top - 4.9
-        print(ret)
+        # print(ret)
         result = ["h"+str(int(x[0])).zfill(2)+"v"+str(int(x[1])).zfill(2) for x in ret]
         return list(set(result))
 

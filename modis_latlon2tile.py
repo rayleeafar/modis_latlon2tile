@@ -1,6 +1,6 @@
 import numpy as np
 from shapely.geometry import Polygon,Point
-
+import os
 '''
 Get Modis tile from lat long
 only use sn_bound_10deg.txt will get multi tiles,but some are not correct
@@ -14,8 +14,11 @@ class Modis2tile():
             https://modis-land.gsfc.nasa.gov/MODLAND_grid.html
             https://landweb.modaps.eosdis.nasa.gov/cgi-bin/developer/tilemap.cgi
         '''
-        self.data = np.genfromtxt("./sn_bound_10deg.txt",skip_header = 7,skip_footer = 2)
-        self.data_polygon = np.genfromtxt("./sn_gring_10deg.txt",skip_header = 7,skip_footer = 2)
+        relative_dir = os.path.split(os.path.abs_file_path(__file__))[0]
+        sn_bound_name = "sn_bound_10deg.txt"
+        sn_gring_name = "sn_gring_10deg.txt" 
+        self.data = np.genfromtxt(os.path.join(relative_dir, sn_bound_name),skip_header = 7,skip_footer = 2)
+        self.data_polygon = np.genfromtxt(os.path.join(relative_dir, sn_gring_name),skip_header = 7,skip_footer = 2)
         self.len = len(self.data)
 
     def latlon2tile(self,latlon):

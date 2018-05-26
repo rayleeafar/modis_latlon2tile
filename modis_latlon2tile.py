@@ -14,7 +14,7 @@ class Modis2tile():
             https://modis-land.gsfc.nasa.gov/MODLAND_grid.html
             https://landweb.modaps.eosdis.nasa.gov/cgi-bin/developer/tilemap.cgi
         '''
-        relative_dir = os.path.split(os.path.abs_file_path(__file__))[0]
+        relative_dir = os.path.split(os.path.abspath(__file__))[0]
         sn_bound_name = "sn_bound_10deg.txt"
         sn_gring_name = "sn_gring_10deg.txt" 
         self.data = np.genfromtxt(os.path.join(relative_dir, sn_bound_name),skip_header = 7,skip_footer = 2)

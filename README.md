@@ -10,7 +10,7 @@ Get Modis tile from lat long
 
 *getmodistiles(self,coordinates):*  
       
-# use python module  
+# use C complied python module  
 tilemap3.py _tilemap3.so   
 **>>>import tilemap3   
 **>>>tilemap3.gethv(32.45,-102.56)   

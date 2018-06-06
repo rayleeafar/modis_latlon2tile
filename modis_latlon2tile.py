@@ -46,11 +46,13 @@ class Modis2tile():
             except Exception as e:
                 print(e)
                 return None
-
+        print(ret)
         tar_point = Point(lon,lat)
         for i in range(0,len(ret)):
-            if bounds[i].disjoint(tar_point):
-            	continue
+            # if bounds[i].disjoint(tar_point):
+            if not bounds[i].contains(tar_point):
+                print(ret[i])
+                continue
             return ret[i]
         return None
 
@@ -86,17 +88,17 @@ class Modis2tile():
         return list(set(result))
 
 if __name__ == '__main__':
-	lat = 47.015
-	lon = -95.0
+	lat = 30.732852
+	lon = -104.768943
 	mt = Modis2tile()
 	print(mt.latlon2tile((lat, lon)))
-	print(mt.getmodistiles([[
-                    -106.2158203125,
-                    31.50362930577303
-                ],
-                [
-                    -82.2216796875,
-                    30.600093873550072
-                ]]))
+	# print(mt.getmodistiles([[
+    #                 -106.2158203125,
+    #                 31.50362930577303
+    #             ],
+    #             [
+    #                 -82.2216796875,
+    #                 30.600093873550072
+    #             ]]))
 
 
